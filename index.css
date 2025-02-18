@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=BR+Firma:wght@400&display=swap');
+
+/* 加载 Phonk Regular DEMO 字体 */
+@font-face {
+    font-family: 'Phonk Regular DEMO';
+    src: url('PhonkRegularDEMO.woff2') format('woff2'),
+         url('PhonkRegularDEMO.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'BR Firma', sans-serif;
+  background-color: #ffffff;
+  transition: background-color 0.8s ease-in-out;
+  color: #715127;
+}
+
+/* 鼠标路径绘制 */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -50; /* 确保 canvas 在文字下面 */
+  pointer-events: none;
+  cursor: none;
+  opacity: 1;
+}
+
+/* 页面样式 */
+.page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 让文字可见 */
+h1, h2, p {
+    font-size: 1.8rem;
+    font-weight: normal;
+    position: relative;
+    z-index: 20;
+    color: #715127;
+}
+
+/* 固定在屏幕中间靠上的文字 */
+.static-text {
+    position: absolute;
+    left: 10%;
+    top: 30%; /* 上移 */
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #715127;
+    text-align: left;
+}
+
+/* 滚动文本容器 */
+.scrolling-text-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 文字样式（空心） */
+.scrolling-text {
+    display: inline-block;
+    font-family: 'Phonk Regular DEMO', sans-serif;
+    font-size: 5rem; /* 让字体更大 */
+    font-weight: bold;
+    color: transparent; 
+    -webkit-text-stroke: 2px #715127; /* 轮廓颜色 */
+    text-transform: uppercase;
+    margin: 0 2rem;
+}
+
+/* 调整行距 */
+.scrolling-text-row {
+    line-height: 1; /* 行距缩小 */
+}
+
+/* 鼠标悬停时变实心 */
+.scrolling-text:hover {
+    color: #715127;
+    -webkit-text-stroke: 0;
+}
+
+/* 第一页排版调整 */
+.page-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.2; /* 缩小行距 */
+}
+
+/* 让 "sixth" 变空心 */
+.sixth {
+    font-family: 'BR Firma', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #715127; /* 空心文字 */
+    transition: all 0.3s ease-in-out;
+    line-height: 2; /* 进一步缩小 "sixth" 之间的行距 */
+    margin: -5px 0; /* 让它们更紧密排列 */
+}
+
+/* 鼠标悬停时变实心 */
+.sixth:hover {
+    color: #715127;
+    -webkit-text-stroke: 0;
+}
+
+/* 鼠标小圆点 */
+.cursor-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    background: #715127; /* 咖啡色 */
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* 确保在最上层 */
+}
+
+  .sixth:hover {
+      color: #715127;
+      -webkit-text-stroke: 0;
+  }
+  
+  /* word-container 让文字满屏 */
+  .word-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+  }
+  
+  .floating-word {
+      position: absolute;
+      font-size: 3rem;
+      font-weight: bold;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+  }
+  
+  .floating-word.fade-out {
+      opacity: 0;
+  }
+/* 让 "water" 和 "sandstorms" 变空心，悬停时变实心 */
+.word-effect {
+    font-family: 'BR Firma', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px #715127;
+    transition: all 0.3s ease-in-out;
+}
+
+.word-effect:hover {
+    color: #715127;
+    -webkit-text-stroke: 0;
+}
+
+/* 让 `water` 和 `sandstorms` 有“呼吸”效果 */
+.floating-word {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    opacity: 1;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    animation: breathing 2s infinite alternate ease-in-out;
+}
+
+@keyframes breathing {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+/* 当再次点击时，渐渐消失 */
+.floating-word.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 固定在第五部分顶部的文字 */
+.fixed-text {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #715127;
+    line-height: 1.2; /* 缩小行距 */
+}
+
+/* 悬停交互 */
+.interactive-line {
+    transition: letter-spacing 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.interactive-line:hover {
+    letter-spacing: 5px;
+    transform: scale(1.1);
+}
+
+/* 滚动文字固定在第五部分底部 */
+.scrolling-text-container {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* 文字样式（默认空心） */
+.scrolling-text {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px #715127;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    padding: 0 2rem;
+}
+
+/* 鼠标悬停时变实心 */
+.scrolling-text:hover {
+    color: #715127;
+    -webkit-text-stroke: 0;
+}
+
+/* 让文本循环滚动 */
+.row-1, .row-2, .row-3 {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* 第一行向右滚动 */
+.row-1 {
+    animation-name: scrollRight;
+}
+
+/* 第二行向左滚动 */
+.row-2 {
+    animation-name: scrollLeft;
+}
+
+/* 第三行向右滚动 */
+.row-3 {
+    animation-name: scrollRight;
+}
+
+/* 右滚动动画 */
+@keyframes scrollRight {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* 左滚动动画 */
+@keyframes scrollLeft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.mirage-text {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 0.3;
+    filter: blur(5px);
+    transition: opacity 1s ease-in-out, filter 1s ease-in-out;
+    cursor: pointer;
+}
+
+.mirage-text.revealed {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.typing-text {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 0;
+    border-right: 2px solid transparent;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.heavy-word {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: grab;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.shadow-word {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.final-word {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: opacity 3s ease-out, filter 3s ease-out;
+    cursor: pointer;
+}
+
+.floating-word {
+    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    cursor: pointer;
+    position: relative;
+}
+
+.page-9 canvas {
+    display: none !important;
+}
+
+
