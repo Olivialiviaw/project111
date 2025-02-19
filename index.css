@@ -339,6 +339,11 @@ h1, h2, p {
     position: relative;
 }
 
+* {
+    cursor: none !important;
+}
+
+
 .page-9 canvas {
     display: none !important;
 }
