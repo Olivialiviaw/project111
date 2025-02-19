@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=BR+Firma:wght@400&display=swap');
 
-/* 加载 Phonk Regular DEMO 字体 */
 @font-face {
     font-family: 'Phonk Regular DEMO';
     src: url('PhonkRegularDEMO.woff2') format('woff2'),
@@ -22,20 +21,18 @@ body {
   color: #715127;
 }
 
-/* 鼠标路径绘制 */
 canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -50; /* 确保 canvas 在文字下面 */
+  z-index: -50; 
   pointer-events: none;
   cursor: none;
   opacity: 1;
 }
 
-/* 页面样式 */
 .page {
     height: 100vh;
     display: flex;
@@ -57,11 +54,10 @@ h1, h2, p {
     color: #715127;
 }
 
-/* 固定在屏幕中间靠上的文字 */
 .static-text {
     position: absolute;
     left: 10%;
-    top: 30%; /* 上移 */
+    top: 30%; 
     transform: translateY(-50%);
     font-size: 2rem;
     font-weight: bold;
@@ -69,7 +65,6 @@ h1, h2, p {
     text-align: left;
 }
 
-/* 滚动文本容器 */
 .scrolling-text-container {
     position: absolute;
     bottom: 10%;
@@ -78,30 +73,26 @@ h1, h2, p {
     white-space: nowrap;
 }
 
-/* 文字样式（空心） */
 .scrolling-text {
     display: inline-block;
     font-family: 'Phonk Regular DEMO', sans-serif;
-    font-size: 5rem; /* 让字体更大 */
+    font-size: 5rem; 
     font-weight: bold;
     color: transparent; 
-    -webkit-text-stroke: 2px #715127; /* 轮廓颜色 */
+    -webkit-text-stroke: 2px #715127; 
     text-transform: uppercase;
     margin: 0 2rem;
 }
 
-/* 调整行距 */
 .scrolling-text-row {
-    line-height: 1; /* 行距缩小 */
+    line-height: 1; 
 }
 
-/* 鼠标悬停时变实心 */
 .scrolling-text:hover {
     color: #715127;
     -webkit-text-stroke: 0;
 }
 
-/* 第一页排版调整 */
 .page-1 {
     display: flex;
     flex-direction: column;
@@ -110,37 +101,34 @@ h1, h2, p {
     height: 100vh;
     text-align: center;
     font-size: 2rem;
-    line-height: 1.2; /* 缩小行距 */
+    line-height: 1.2; 
 }
 
-/* 让 "sixth" 变空心 */
 .sixth {
     font-family: 'BR Firma', sans-serif;
     font-size: 2rem;
     font-weight: bold;
     color: transparent;
-    -webkit-text-stroke: 1.5px #715127; /* 空心文字 */
+    -webkit-text-stroke: 1.5px #715127; 
     transition: all 0.3s ease-in-out;
-    line-height: 2; /* 进一步缩小 "sixth" 之间的行距 */
-    margin: -5px 0; /* 让它们更紧密排列 */
+    line-height: 2; 
+    margin: -5px 0; 
 }
 
-/* 鼠标悬停时变实心 */
 .sixth:hover {
     color: #715127;
     -webkit-text-stroke: 0;
 }
 
-/* 鼠标小圆点 */
 .cursor-dot {
     width: 15px;
     height: 15px;
     border-radius: 50%;
     position: absolute;
-    background: #715127; /* 咖啡色 */
+    background: #715127;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    z-index: 9999; /* 确保在最上层 */
+    z-index: 9999; 
 }
 
   .sixth:hover {
@@ -148,7 +136,6 @@ h1, h2, p {
       -webkit-text-stroke: 0;
   }
   
-  /* word-container 让文字满屏 */
   .word-container {
       position: fixed;
       top: 0;
@@ -170,7 +157,7 @@ h1, h2, p {
   .floating-word.fade-out {
       opacity: 0;
   }
-/* 让 "water" 和 "sandstorms" 变空心，悬停时变实心 */
+
 .word-effect {
     font-family: 'BR Firma', sans-serif;
     font-size: 2rem;
@@ -185,7 +172,6 @@ h1, h2, p {
     -webkit-text-stroke: 0;
 }
 
-/* 让 `water` 和 `sandstorms` 有“呼吸”效果 */
 .floating-word {
     position: absolute;
     font-size: 3rem;
@@ -204,13 +190,11 @@ h1, h2, p {
     }
 }
 
-/* 当再次点击时，渐渐消失 */
 .floating-word.fade-out {
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
-/* 固定在第五部分顶部的文字 */
 .fixed-text {
     position: absolute;
     top: 10%;
@@ -219,10 +203,9 @@ h1, h2, p {
     font-size: 2rem;
     font-weight: bold;
     color: #715127;
-    line-height: 1.2; /* 缩小行距 */
+    line-height: 1.2; 
 }
 
-/* 悬停交互 */
 .interactive-line {
     transition: letter-spacing 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
@@ -232,7 +215,6 @@ h1, h2, p {
     transform: scale(1.1);
 }
 
-/* 滚动文字固定在第五部分底部 */
 .scrolling-text-container {
     position: absolute;
     bottom: 5%;
@@ -241,7 +223,6 @@ h1, h2, p {
     white-space: nowrap;
 }
 
-/* 文字样式（默认空心） */
 .scrolling-text {
     display: inline-block;
     font-size: 3rem;
@@ -253,13 +234,11 @@ h1, h2, p {
     padding: 0 2rem;
 }
 
-/* 鼠标悬停时变实心 */
 .scrolling-text:hover {
     color: #715127;
     -webkit-text-stroke: 0;
 }
 
-/* 让文本循环滚动 */
 .row-1, .row-2, .row-3 {
     display: flex;
     gap: 3rem;
@@ -269,22 +248,18 @@ h1, h2, p {
     animation-iteration-count: infinite;
 }
 
-/* 第一行向右滚动 */
 .row-1 {
     animation-name: scrollRight;
 }
 
-/* 第二行向左滚动 */
 .row-2 {
     animation-name: scrollLeft;
 }
 
-/* 第三行向右滚动 */
 .row-3 {
     animation-name: scrollRight;
 }
 
-/* 右滚动动画 */
 @keyframes scrollRight {
     from {
         transform: translateX(-100%);
@@ -294,7 +269,6 @@ h1, h2, p {
     }
 }
 
-/* 左滚动动画 */
 @keyframes scrollLeft {
     from {
         transform: translateX(100%);
