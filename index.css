@@ -19,6 +19,7 @@ body {
   background-color: #ffffff;
   transition: background-color 0.8s ease-in-out;
   color: #715127;
+  cursor: none;
 }
 
 canvas {
