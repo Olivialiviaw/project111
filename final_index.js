@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (existingWords.length > 0) {
           removeWords();
       } else {
-          createWords("sandstorms", "#E9B484");
+          createWords("sandstorms", "#FDFA69");
       }
   });
 });
