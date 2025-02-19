@@ -44,15 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
                   if (previousPage) {
                       let previousBrushColor = previousPage.getAttribute("data-brush");
 
-                      // 🌟 **路径颜色扩展填充整个屏幕**
                       gsap.to(canvas, { opacity: 1, duration: 0.5 });
                       ctx.fillStyle = previousBrushColor;
                       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                      // 🌟 **让路径颜色缓慢过渡为背景色**
                       gsap.to(document.body, { backgroundColor: previousBrushColor, duration: 1 });
 
-                      // 🌟 **在新背景填充后，平滑清除路径**
                       setTimeout(() => {
                           gsap.to(canvas, { opacity: 0, duration: 1 });
                           setTimeout(() => {
@@ -138,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
               word.style.transform = "scale(1.2)";
           }, Math.random() * 1000);
 
-          // **添加"呼吸"效果**
           setInterval(() => {
               word.style.transform = word.style.transform === "scale(1.2)" ? "scale(1)" : "scale(1.2)";
           }, 1000);
@@ -236,14 +232,14 @@ document.querySelectorAll(".final-word").forEach((word) => {
 
 document.querySelectorAll(".floating-word").forEach((word) => {
   word.addEventListener("mouseover", () => {
-      let x = (Math.random() - 0.5) * 300; // 让单词随机向四周飘散
+      let x = (Math.random() - 0.5) * 300; 
       let y = (Math.random() - 0.5) * 200;
       word.style.transform = `translate(${x}px, ${y}px)`;
-      word.style.opacity = "0.2"; // 变得半透明
+      word.style.opacity = "0.2"; 
   });
 
   word.addEventListener("mouseout", () => {
-      word.style.transform = "translate(0, 0)"; // 悬停结束后回到原位
+      word.style.transform = "translate(0, 0)"; 
       word.style.opacity = "1";
   });
 });
