@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: none;
 }
 
 body {
@@ -130,6 +131,7 @@ h1, h2, p {
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999; 
+    cursor: none;
 }
 
   .sixth:hover {
